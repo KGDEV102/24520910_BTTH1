@@ -85,7 +85,6 @@ bool isTime(Time t){
 }
 void Nhap(chuyenBay& X){
     while(true){
-        
         cout<<"Nhap vao ma chuyen bay: ";
         cin>>X.ma;
         cin.ignore();
@@ -101,10 +100,7 @@ void Nhap(chuyenBay& X){
         if(isMa(X.ma) && isDate(X.ngay) && isTime(X.gio) && isDiaDiem(X.di) && isDiaDiem(X.den)){
             break;
         }
-
         cout << "Thong tin khong hop le, vui long nhap lai!\n";
-        
-
     }
 }
 //viết hàm xuất chuyến bay
@@ -114,29 +110,14 @@ void Xuat(chuyenBay X){
     cout<<"Gio bay: "<<X.gio.gio<<":"<<X.gio.phut<<endl;
     cout<<"Noi di: "<<X.di<<endl;
     cout<<"Noi den: "<<X.den<<endl;
-
 }
-//viết hàm tìm kiếm các chuyến bay theo mã 
-//viêt hàm chuyển các kí tự về dạng in thường để tiện so sánh 
-void chuyen(string& s){
-    for(int i=0;i<s.size();i++){
-        s[i] = tolower(s[i]);
-    }
-
-}
+// hàm tìm kiếm chuyến bay theo mã 
 vector<chuyenBay> timKiem1(chuyenBay X[], int n){
-  
     vector<chuyenBay> v;
-   
     string s;
     getline(cin, s);
-
-    chuyen(s); // Chuyển mã chuyến bay cần tìm về chữ thường
-
     for (int i = 0; i < n; i++) {
         string temp = X[i].ma; // Lưu tên gốc
-        chuyen(temp); // Chuyển tên sang chữ thường
-
         if (temp == s) { 
             v.push_back(X[i]);
         }
@@ -145,18 +126,11 @@ vector<chuyenBay> timKiem1(chuyenBay X[], int n){
 }
 // hàm tìm kiếm các theo nơi đi
 vector<chuyenBay> timKiem2(chuyenBay X[], int n){
-  
     vector<chuyenBay> v;
-   
     string s;
     getline(cin, s);
-
-    chuyen(s); // Chuyển nơi đi chuyến bay cần tìm về chữ thường
-
     for (int i = 0; i < n; i++) {
         string temp = X[i].di; // Lưu tên gốc
-        chuyen(temp); // Chuyển tên sang chữ thường
-
         if (temp == s) { 
             v.push_back(X[i]);
         }
@@ -165,18 +139,11 @@ vector<chuyenBay> timKiem2(chuyenBay X[], int n){
 }
 // hàm tìm kiếm chuyến bay theo nơi đến 
 vector<chuyenBay> timKiem3(chuyenBay X[], int n){
-   
     vector<chuyenBay> v;
-   
     string s;
     getline(cin, s);
-
-    chuyen(s); // Chuyển mã chuyến bay cần tìm về chữ thường
-
     for (int i = 0; i < n; i++) {
         string temp = X[i].den; // Lưu tên gốc
-        chuyen(temp); // Chuyển tên sang chữ thường
-
         if (temp == s) { 
             v.push_back(X[i]);
         }
@@ -212,8 +179,6 @@ vector<chuyenBay> hienThi(chuyenBay X[], int n, string di,date ngay){
 
     for (int i = 0; i < n; i++) {
         string temp = X[i].di; // Lưu tên gốc
-        chuyen(temp); // Chuyển tên sang chữ thường
-
         if (temp == di) { 
            if(trungDate(ngay,X[i].ngay)){
             v.push_back(X[i]);
@@ -236,7 +201,6 @@ int dem(chuyenBay X[], int n, string di, string den){
         }
     }
     return cnt;
-
 }
 int main(){
     chuyenBay X[100];
@@ -296,7 +260,7 @@ int main(){
     
     vector<chuyenBay>ans = hienThi(X,n,di,ngay);
     if(ans.size()==0){
-        cout<<"Khong co chuyen bay nao";
+        cout<<"Khong co chuyen bay nao"<<endl;
     }else{
         cout<<"Chuyen bay di tu "<<di<<" vao ngay "<<ngay.ngay<<"/"<<ngay.thang<<"/"<<ngay.nam<<": "<<endl;
         for(chuyenBay x:ans){
@@ -305,6 +269,7 @@ int main(){
     }
    
     // đếm số lượng chuyến bay từ một nơi đến một nơi nhất định
+    cin.ignore();
     cout<<"Nhap vao noi di: ";
     string di1;
     getline(cin,di1);
