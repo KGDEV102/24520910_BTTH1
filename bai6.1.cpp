@@ -34,9 +34,13 @@ int main(){
             vitri.push_back(i);
         }
     }
-    cout<<"Mang A xuat hien "<<cnt<<" lan tai cac chi so bat dau la: ";
-    for(int x:vitri){
-        cout<<x<<" ";
+    if(cnt==0){
+        cout<<"Mang A khong xuat hien trong mang B"<<endl;
+    }else{
+        cout<<"Mang A xuat hien "<<cnt<<" lan tai cac chi so bat dau la: "<<endl;
+        for(int x:vitri){
+            cout<<x<<endl;
+        }
     }
-
+    
 }
