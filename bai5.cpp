@@ -54,7 +54,7 @@ date* nextDay(date N){
 date* prevDay(date N){
     date* prev = new date;
     if(N.ngay == 1){
-        if(N.thang == 12){
+        if(N.thang == 1){
             prev->ngay = 31;
             prev->thang = 12;
             prev->nam = N.nam - 1;
@@ -95,10 +95,5 @@ int main(){
    Xuat(*prev);
    cout<<endl;
    cout << "Ngay: "; Xuat(N);cout<<" la ngay thu "<<ngayOfnam(N)<<" trong nam";
-
-  
-
-
    
-    
 }
